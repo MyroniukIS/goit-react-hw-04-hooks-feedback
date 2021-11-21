@@ -1,11 +1,17 @@
 .items_list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   list-style: none;
   font-size: 24px;
-  margin-left: 50px;
+  padding: 0;
 }
 .item {
-  outline: 1px solid black;
-  width: 300px;
+  padding: 5px;
+  border-radius: 5px;
+  outline: 1px solid aliceblue;
+  outline-style: dashed;
+  width: 60%;
+  color: aliceblue;
+  background-color: rgb(16, 16, 85);
 }

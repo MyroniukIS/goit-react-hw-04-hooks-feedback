@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+.title {
+  font-size: 48px;
+  text-align: center;
+  text-shadow: 0 0 8px rgb(107, 107, 216);
+  margin: 0;
+  margin-left: 30px;
+}
+.img {
+  width: 100px;
+}
+.container {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

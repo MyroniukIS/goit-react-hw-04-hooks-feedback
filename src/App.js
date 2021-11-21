@@ -1,63 +1,71 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
+import { useState } from 'react';
+import style from './App.module.css';
 import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Statistics from './components/Statistics/Statistics';
 import Section from 'components/Section/Section';
 import Notification from 'components/Notification/Notification';
+import coffee from './img/espresso.png';
 
-class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+export default function App() {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
 
-  handleChangeFeedbackOption = e => {
+  const handleChangeFeedbackOption = e => {
     const { name } = e.currentTarget;
-    this.setState(prevState => {
-      return { [name]: (prevState[name] += 1) };
-    });
+
+    switch (name) {
+      case 'good':
+        setGood(prevState => (prevState += 1));
+        break;
+      case 'neutral':
+        setNeutral(prevState => (prevState += 1));
+        break;
+      case 'bad':
+        setBad(prevState => (prevState += 1));
+        break;
+      default:
+        return;
+    }
   };
 
-  countTotalFeedback = () => {
-    const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
-  };
+  const countTotalFeedback = () => good + neutral + bad;
 
-  countPositiveFeedbackPercentage = () => {
-    const { good } = this.state;
-    const total = this.countTotalFeedback();
+  const countPositiveFeedbackPercentage = () => {
+    const total = countTotalFeedback();
     return Math.round((100 * good) / total, 0);
   };
 
-  render() {
-    const { good, neutral, bad } = this.state;
+  return (
+    <>
+      <div className={style.container}>
+        <img className={style.img} src={coffee} alt="coffe cup" />
+        <h1 className={style.title}>EXPRESSO</h1>
+      </div>
 
-    return (
-      <>
-        <h1 className="title">EXPRESSO</h1>
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
-            onLeaveFeedback={this.handleChangeFeedbackOption}
-          />
-        </Section>
-        <Section title="Statistics">
-          {this.countTotalFeedback() > 0 ? (
+      <Section title="Please leave feedback">
+        <FeedbackOptions
+          options={['good', 'neutral', 'bad']}
+          onLeaveFeedback={handleChangeFeedbackOption}
+        />
+      </Section>
+      <Section title="Statistics">
+        {countTotalFeedback() > 0 ? (
+          <>
             <Statistics
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback()}
-              positiveFeedback={this.countPositiveFeedbackPercentage()}
+              total={countTotalFeedback()}
+              positiveFeedback={countPositiveFeedbackPercentage()}
             />
-          ) : (
-            <Notification mess="No feedback given" />
-          )}
-        </Section>
-      </>
-    );
-  }
+            <Notification mess="Thank you for your feedback!" />
+          </>
+        ) : (
+          <Notification mess="No feedback given" />
+        )}
+      </Section>
+    </>
+  );
 }
-
-export default App;
