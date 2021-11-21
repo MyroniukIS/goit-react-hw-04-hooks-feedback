@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-02-feedback",
+  "name": "goit-react-hw-04-hooks-feedback",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://myroniukis.github.io/goit-react-hw-02-feedback",
+  "homepage": "https://myroniukis.github.io/goit-react-hw-04-hooks-feedback",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -27,11 +27,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MyroniukIS/goit-react-hw-02-feedback.git"
+    "url": "git+https://github.com/MyroniukIS/goit-react-hw-04-hooks-feedback.git"
   },
   "author": "MyroniukIS <knopkakyrs@gmail.com>",
   "bugs": {
-    "url": "https://github.com/MyroniukIS/goit-react-hw-02-feedback/issues"
+    "url": "https://github.com/MyroniukIS/goit-react-hw-04-hooks-feedback/issues"
   },
   "eslintConfig": {
     "extends": [
